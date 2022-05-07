@@ -47,6 +47,9 @@ public class OutTwo {
              *          Outer.access$1(outer);
              *      }
              *  }
+             *
+             *  外部类返回接口，使用内部类实现接口
+             *   
              * */
            // OutTwo.this.action();
             action();
