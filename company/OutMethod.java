@@ -3,7 +3,7 @@ package company;
 /**
  * @author yudong
  */
-public class OutThree {
+public class OutMethod {
     private int a = 100;
     private static String nation = "china";
 
@@ -46,8 +46,8 @@ public class OutThree {
 
     public static void main(String[] args) {
         test(25);
-        OutThree outThree = new OutThree();
-        outThree.method();
+        OutMethod outMethod = new OutMethod();
+        outMethod.method();
     }
 
     /**
