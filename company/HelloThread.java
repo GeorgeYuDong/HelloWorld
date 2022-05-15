@@ -1,5 +1,7 @@
 package company;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author yudong
  * 继承Thread,实现线程
@@ -13,6 +15,7 @@ public class HelloThread extends Thread {
      */
     @Override
     public void run() {
+        System.out.println("线程1111");
         System.out.println("thread name is " + Thread.currentThread().getName());
         System.out.println("thread id is " + Thread.currentThread().getId());
     }
@@ -37,9 +40,14 @@ public class HelloThread extends Thread {
         thread.start();
 
         /**
-         * 第二个线程
+         * 第二个线程,使用匿名内部类实现run方法
          * */
-        Thread thread1 = new HelloThread();
+        Thread thread1 = new Thread() {
+            @Override
+            public void run() {
+                System.out.println("all,i love china");
+            }
+        };
         thread1.setName("second thread");
         thread1.setPriority(6);
         System.out.println("thread1 priority is " + thread1.getPriority());
@@ -48,8 +56,45 @@ public class HelloThread extends Thread {
         /**
          * 直接调用run方法，顺序执行，不会有新的线程产生，线程名为main,即主函数
          * */
+        System.out.println("主线程--------------");
         thread.run();
 
+        Thread thread2 = new Thread() {
+            @Override
+            public void run() {
+                for(;;) {
+                    System.out.println("线程3--------");
+                    try {
+                        TimeUnit.SECONDS.sleep(2);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("hello,world");
+                    System.out.println("thread3 name is " + Thread.currentThread().getName());
+                }
+
+            }
+        };
+        thread2.start();
+
+        Thread thread3 = new Thread() {
+            @Override
+            public void run() {
+                System.out.println("线程4-----------");
+                System.out.println("Chinese Great Wall");
+                for(;;) {
+                    System.out.println("China is the greatest country");
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("abcdsfsdffdfd");
+                    System.out.println("thread4 name is " + Thread.currentThread().getName());
+                }
+            }
+        };
+        thread3.start();
 
     }
 

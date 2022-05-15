@@ -82,8 +82,70 @@ public class ChapterFive {
          *
          *
          * */
+
+        Size size = Size.SMALL;
+        System.out.println(size.toString());
+        System.out.println(size.name());
+
+        System.out.println("枚举比较---------------");
+        System.out.println(size == Size.LARGE);
+        System.out.println(size.equals(Size.SMALL));
+        System.out.println(size == Size.SMALL);
+
+        System.out.println("枚举下标-----------------");
+        System.out.println(size.ordinal());
+        System.out.println(Size.LARGE.ordinal());
+
+        System.out.println("枚举比较CompareTo接口--------------------");
+        System.out.println(size.compareTo(Size.MEDIUM));
+        System.out.println(size.compareTo(Size.SMALL));
+
+        /**
+         * ENUM 可用于方法参数，类变量，实例变量
+         * 可用于switch语句
+         * */
+        chose(size);
+
+        System.out.println("valueOf方法------------------");
+        System.out.println(Size.valueOf("LARGE"));
+        System.out.println(Size.MEDIUM == Size.valueOf("MEDIUM"));
+
+        System.out.println("values()方法----------------------");
+        /**
+         * values方法，Enum数组
+         * */
+        for (Size size1:
+             Size.values()) {
+            System.out.print(size1 + " ");
+        }
+        System.out.println("");
+
+        System.out.println("从简写中得到枚举值,静态方法---------------------");
+        System.out.println(Size.fromAbbr("M"));
+
+
     }
 
-
+    /**
+     * 枚举值在switch语句中转变为其ordinal()值
+     *
+     * */
+    static void chose(Size size) {
+        switch (size) {
+            case LARGE:
+                System.out.println("chose large");
+                break;
+            case SMALL:
+                System.out.println("small");
+                break;
+            case MEDIUM:
+                System.out.println("medium");
+                break;
+        }
+    }
 }
+
+
+
+
 

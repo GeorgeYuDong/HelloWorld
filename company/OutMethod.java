@@ -5,7 +5,7 @@ package company;
  */
 public class OutMethod {
     private int a = 100;
-    private static String nation = "china";
+    private static final String nation = "china";
 
     private static void hi() {
         System.out.println("hi");
