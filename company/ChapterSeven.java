@@ -125,7 +125,24 @@ public class ChapterSeven {
          * 道，就是按照天道运行的道理，好的坏的，都会各得其所，道就是所，
          * 就是归宿，就是宿命,想透了这些便不会那么痛苦。
          * 它运行不止，但在其中的所有都会各得其所。
+         *
+         * Comparable 接口
+         *
+         * public interface Comparable<T> {
+         *     public int compareTo(T o);
+         * }
+         * false < true
+         * Float 和 Double. 0.01 和0.1*0.1值不一样
+         *
          * */
+
+
+        /**
+         * random
+         * */
+        for (int i = 0; i < 3; i++) {
+            System.out.println(Math.random());
+        }
 
 
 
