@@ -139,10 +139,36 @@ public class ChapterSeven {
 
         /**
          * random
+         * 在思考中进步，在实践中提高
          * */
         for (int i = 0; i < 3; i++) {
             System.out.println(Math.random());
         }
+
+        //valueOf返回对象,参数String
+        Boolean bool = Boolean.valueOf("false");
+        System.out.println(bool.equals(false));
+
+        //parseInt(s),参数是String, 返回基本类型
+        int it = Integer.parseInt("123");
+        System.out.println("it is " + (it + 23) );
+
+        System.out.println(Integer.toBinaryString(12));
+        System.out.println(Integer.toOctalString(34));
+
+        /**
+         * ae，按照16进制解析, 10*16+14=174
+         * */
+        System.out.println(Integer.parseInt("ae",16));
+
+        System.out.println(Double.parseDouble("12.34"));
+        /**
+         * 非数值  正无穷  负无穷
+         * Number抽象类，返回基本数据类型
+         * */
+        System.out.println(Double.NaN);
+        System.out.println(Double.POSITIVE_INFINITY);
+        System.out.println(Double.NEGATIVE_INFINITY);
 
 
 
