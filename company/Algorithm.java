@@ -20,6 +20,9 @@ public class Algorithm {
         System.out.println(removeElement(arr2, 2));
         System.out.println(Arrays.toString(arr2));
 
+        int[] arr3 = new int[5];
+
+
     }
     //小规模数据排序，插入排序比快速排序快
 
@@ -91,5 +94,12 @@ public class Algorithm {
         return slowIndex;
     }
 
+    /***
+     *
+     * @param array
+     * @param index
+     * @param value
+     * insert value into array in the index
+     */
 
 }

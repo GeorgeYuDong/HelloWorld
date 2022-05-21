@@ -3,7 +3,7 @@ package company;
 /**
  * @author yudong
  */
-public interface MyComparable {
+public interface MyComparable<T> {
 
     /***
      * @param other
@@ -48,7 +48,7 @@ public interface MyComparable {
      *
      */
 
-    int compareTo(Object other);
+    int compareTo(T other);
 
     public static final int a = 1;
 
