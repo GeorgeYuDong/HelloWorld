@@ -57,6 +57,19 @@ public class DynamicArray<E> {
         return oldValue;
     }
 
+    /**
+     * T的上界限定为E,类型为E
+     * 第一种写法, T是一种声明
+     * public <T extends E> void allAll(DynamicArray<T> c) {
+     * 第二种写法如下
+     * <? extends E> 为E的子类,实例化类型参数，参数未知
+     */
+    public void allAll(DynamicArray<? extends E> c) {
+        for (int i = 0; i < c.size; i++) {
+            add(c.get(i));
+        }
+    }
+
     public static void main(String[] args) {
         DynamicArray<Double> array = new DynamicArray<>();
         Random rnd = new Random();
@@ -66,8 +79,16 @@ public class DynamicArray<E> {
         }
         Double d = array.get(rnd.nextInt(size));
         System.out.println(d);
+        System.out.println(array.size());
 
-        Integer[] arr = Arrays.copyOf(new Integer[]{1,2,3}, 10);
+        Integer[] arr = Arrays.copyOf(new Integer[]{1, 2, 3}, 40);
         System.out.println(arr.length);
+
+        DynamicArray<Number> number = new DynamicArray<>();
+        DynamicArray<Integer> ints = new DynamicArray<>();
+        ints.add(100);
+        ints.add(34);
+        number.allAll(ints);
+
     }
 }

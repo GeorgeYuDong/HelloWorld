@@ -3,7 +3,7 @@ package company;
 /**
  * @author yudong
  */
-public class PointTwo implements MyComparable {
+public class PointTwo implements MyComparable<PointTwo> {
     private double x;
     private double y;
 
@@ -69,8 +69,11 @@ public class PointTwo implements MyComparable {
                 '}';
     }
 
+    /**
+     * PointTwo实现了MyComparable接口,T是参数类型化
+     * */
     @Override
-    public int compareTo(Object other) {
+    public int compareTo(PointTwo other) {
         if (!(other instanceof PointTwo)) {
             throw new IllegalArgumentException();
         }

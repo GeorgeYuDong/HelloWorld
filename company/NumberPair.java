@@ -16,7 +16,8 @@ public class NumberPair<U extends Number, V extends Number> extends Pair<U, V> {
     }
 
     /**
-     * 限定类型实现Comparable接口
+     * 限定类型实现Comparable接口,必须是已经实现过Comparable的接口的类型
+     * 未实现该接口的类型不适用
      */
     public static <T extends Comparable<T>> T max(T[] arr) {
         T max = arr[0];
@@ -36,6 +37,9 @@ public class NumberPair<U extends Number, V extends Number> extends Pair<U, V> {
         NumberPair<Integer, Double> pair = new NumberPair<>(10, 12.34);
         System.out.println(pair.sum());
 
+        /**
+         * 包装类都实现了Comparable的接口
+         * */
         System.out.println(max(new Integer[]{1, 25, 3, 4}));
     }
 }

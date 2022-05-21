@@ -20,7 +20,8 @@ public class Algorithm {
         System.out.println(removeElement(arr2, 2));
         System.out.println(Arrays.toString(arr2));
 
-        int[] arr3 = new int[5];
+        int[] arr3 = new int[]{-4, -3, 0, 1, 2, 5};
+        System.out.println(Arrays.toString(sortedSquares(arr3)));
 
 
     }
@@ -94,12 +95,45 @@ public class Algorithm {
         return slowIndex;
     }
 
+
+    public static int[] sortedSquares(int[] nums) {
+        int right = nums.length - 1;
+        int left = 0;
+        int[] result = new int[nums.length];
+        int index = result.length - 1;
+
+        /**
+         * 大的都在两边，把两边的数相乘对比，放到另一个数组中
+         * 复杂度O(N)
+         * */
+        while (left <= right) {
+            if (nums[left] * nums[left] > nums[right] * nums[right]) {
+                result[index--] = nums[left] * nums[left];
+                ++left;
+            } else {
+                result[index--] = nums[right] * nums[right];
+                --right;
+            }
+        }
+        return result;
+    }
+
     /***
      *
-     * @param array
-     * @param index
-     * @param value
-     * insert value into array in the index
+     * @param nums
+     * @param s
+     * find minSubArrayLen
      */
-
+    public static int minSubArrayLen(int s, int[] nums) {
+        int left = 0, sum = 0;
+        int result = Integer.MAX_VALUE;
+        for (int right = 0; right < nums.length; right++) {
+            sum = sum + nums[right];
+            while (sum >= s) {
+                result = Math.min(result, right - left + 1);
+                sum = sum - nums[left++];
+            }
+        }
+        return result == Integer.MAX_VALUE ? 0 : result;
+    }
 }
