@@ -62,11 +62,52 @@ public class DynamicArray<E> {
      * 第一种写法, T是一种声明
      * public <T extends E> void allAll(DynamicArray<T> c) {
      * 第二种写法如下
-     * <? extends E> 为E的子类,实例化类型参数，参数未知
+     * ? extends E 为E的子类,实例化类型参数，参数未知
      */
     public void allAll(DynamicArray<? extends E> c) {
         for (int i = 0; i < c.size; i++) {
             add(c.get(i));
+        }
+    }
+
+
+    /**
+     * 无限定通配符
+     * 可以改为使用类型参数:
+     * public static <T> int indexOf(DynamicArray<T> array, Object elem)
+     * 通配符形式更为简洁
+     * 两种通配符只能读，不能写
+     */
+    public static int indexOf(DynamicArray<?> array, Object elem) {
+        for (int i = 0; i < array.size(); i++) {
+            if (array.get(i).equals(elem)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private static <T> void swapInternal(DynamicArray<T> array, int i, int j) {
+        T tmp = array.get(i);
+        array.set(i, array.get(j));
+        array.set(j, tmp);
+    }
+
+    public static void swap(DynamicArray<?> array, int i, int j) {
+        swapInternal(array, i, j);
+    }
+
+    /**
+     * 参数之间有依赖关系，S是D的子类，只能用类型参数
+     * 可以简化声明
+     * static <D> void
+     * copy(DynamicArray<D> dest, DynamicArray<? extends D> src)
+     * */
+    public static <D, S extends D> void copy(DynamicArray<D> dest,
+                                             DynamicArray<S> src) {
+
+        for (int i = 0; i < src.size(); i++) {
+            dest.add(src.get(i));
         }
     }
 
@@ -89,6 +130,19 @@ public class DynamicArray<E> {
         ints.add(100);
         ints.add(34);
         number.allAll(ints);
+
+        System.out.println(indexOf(number, 34));
+        System.out.println(indexOf(number, 100));
+
+        DynamicArray<Integer> dynamicArray = new DynamicArray<>();
+        DynamicArray<? extends Number> numberArray = dynamicArray;
+        Integer a = 200;
+        /**
+         * ? extends Number 表示Number的子类型，无法确知是哪个类型。
+         * 不能保证类型安全
+         * */
+        //  numberArray.add(a); 不能写入
+
 
     }
 }

@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ChapterOne {
 
     public static void main(String[] args) {
-        Person person = new Person("junjun");
+        Person person = new Person("China");
         System.out.println(person.getName());
         //base type
         //reference type

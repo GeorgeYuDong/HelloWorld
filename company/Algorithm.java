@@ -23,6 +23,9 @@ public class Algorithm {
         int[] arr3 = new int[]{-4, -3, 0, 1, 2, 5};
         System.out.println(Arrays.toString(sortedSquares(arr3)));
 
+        int[] nums = new int[]{2,3,1,2,4,3};
+        System.out.println(minSubArrayLen(10,nums));
+
 
     }
     //小规模数据排序，插入排序比快速排序快
@@ -123,12 +126,19 @@ public class Algorithm {
      * @param nums
      * @param s
      * find minSubArrayLen
+     * 滑动窗口
+     * CI/CD,持续交付/持续集成
+     * DevOps,开发运维
+     *
      */
     public static int minSubArrayLen(int s, int[] nums) {
         int left = 0, sum = 0;
         int result = Integer.MAX_VALUE;
         for (int right = 0; right < nums.length; right++) {
             sum = sum + nums[right];
+            /**
+             * 此处是核心,不断调整left的起始位置
+             * */
             while (sum >= s) {
                 result = Math.min(result, right - left + 1);
                 sum = sum - nums[left++];
@@ -136,4 +146,20 @@ public class Algorithm {
         }
         return result == Integer.MAX_VALUE ? 0 : result;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

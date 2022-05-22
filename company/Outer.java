@@ -50,5 +50,8 @@ public class Outer {
          * */
         Outer outer = new Outer();
         outer.test();
+
+        StaticInner si = new StaticInner();
+        si.innerMethod();
     }
 }
