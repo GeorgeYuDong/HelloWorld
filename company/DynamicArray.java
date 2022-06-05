@@ -111,6 +111,15 @@ public class DynamicArray<E> {
         }
     }
 
+    /**
+     * ? super E 支持写入
+     * */
+    public void copyTo(DynamicArray<? super E> dest) {
+        for (int i = 0; i < size ; i++) {
+           dest.add(get(i));
+        }
+    }
+
     public static void main(String[] args) {
         DynamicArray<Double> array = new DynamicArray<>();
         Random rnd = new Random();
@@ -130,6 +139,7 @@ public class DynamicArray<E> {
         ints.add(100);
         ints.add(34);
         number.allAll(ints);
+        ints.copyTo(number);
 
         System.out.println(indexOf(number, 34));
         System.out.println(indexOf(number, 100));

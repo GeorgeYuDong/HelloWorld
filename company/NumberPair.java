@@ -18,6 +18,7 @@ public class NumberPair<U extends Number, V extends Number> extends Pair<U, V> {
     /**
      * 限定类型实现Comparable接口,必须是已经实现过Comparable的接口的类型
      * 未实现该接口的类型不适用
+     * 返回值依赖于类型参数，不能用通配符代替
      */
     public static <T extends Comparable<T>> T max(T[] arr) {
         T max = arr[0];
