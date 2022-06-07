@@ -38,8 +38,17 @@ public class LinkedListAlgo {
         System.out.println("");
     }
 
+
     /**
      * 单链表翻转
+     * 三个指针
+     * 步骤：
+     * 1.获取下一个节点 next = curr->next
+     * 2.当前节点指向前驱结点curr->pre
+     * 3.当前结点转变为前驱结点(赋值操作)，pre=curr
+     * 4.下一个结点转变为当前结点，curr=next
+     *
+     * 当前结点为null时，pre结点为尾结点，返回pre结点，则翻转成功
      */
     public static Node reverse(Node list) {
         Node curr = list, pre = null;
