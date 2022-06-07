@@ -45,6 +45,7 @@ public class ChapterEight {
         }
 
 
+
         /**
          * 泛型通过类型擦除实现，插入必要的强制类型转换
          * 虚拟机运行时只知道Pair,不知道Pair<Integer,String>
@@ -57,5 +58,4 @@ public class ChapterEight {
             System.out.println(indexOf(new Integer[]{1,2,3,4}, 0));
         }
     }
-
 }
