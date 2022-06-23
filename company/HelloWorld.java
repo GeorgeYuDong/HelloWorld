@@ -13,7 +13,7 @@ public class HelloWorld {
     public static void main(String[] args) {
         System.out.println("hello,world");
 
-        //-32768 ~ 32767
+        //-32768 ~ 32767 Java只定义了带符号的整数，也就是说没有无符号整数，这和C语言不一样
         //2 byte
         short a = 30000;
         System.out.println("a is " + a);
