@@ -218,6 +218,7 @@ public class HelloWorld {
             System.out.println(h1.name);
             System.out.println(h1.age);
             System.out.println("hello,world");
+            final double AI = 3.5;
         }
 
         {
