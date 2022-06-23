@@ -219,6 +219,17 @@ public class HelloWorld {
             System.out.println(h1.age);
             System.out.println("hello,world");
             final double AI = 3.5;
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("abc");
+            sb.append("efg");
+            System.out.println(sb.toString());
+            // var 可以少写类型,编译器自我推断
+            var sbb = new StringBuilder();
+            sbb.append("cde");
+            sbb.append("hjk");
+            System.out.println(sbb.toString());
+
         }
 
         {
