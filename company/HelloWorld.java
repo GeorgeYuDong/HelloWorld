@@ -174,7 +174,7 @@ public class HelloWorld {
 
         //
         /*
-        
+
          */
         {
             double randNum = 0;
@@ -230,6 +230,206 @@ public class HelloWorld {
             sbb.append("hjk");
             System.out.println(sbb.toString());
 
+            int n = 100;
+            System.out.println("n = " + n);
+
+            n = 200;
+            System.out.println("n = " + n);
+
+            n += 500;
+            System.out.println("n = " + n);
+
+            // 除数为0， 编译不报错， 运行报错
+
+            // 无符号右移，高位补零
+            n = -536870912;
+            System.out.println(Integer.toBinaryString(n));
+            var strN = Integer.toBinaryString(n).toString();
+            System.out.println(strN.length());
+
+            int abcfirst = n >>> 1;
+            System.out.println(Integer.toBinaryString(abcfirst));
+            var strfirst = Integer.toBinaryString(abcfirst).toString();
+            System.out.println(strfirst.length());
+
+            int abcsecond = n >>> 2;
+            System.out.println(Integer.toBinaryString(abcsecond));
+            var strSecond = Integer.toBinaryString(abcsecond).toString();
+            System.out.println(strSecond.length());
+
+            int abcthird = n >>> 29;
+            System.out.println(Integer.toBinaryString(abcthird));
+            int abcfourth = n >>> 31;
+            System.out.println(Integer.toBinaryString(abcfourth));
+
+            //short, byte auto convert to int
+            //short 整数最大值2的15次方-1
+            var abcfive = Math.pow(2, 15) - 1;
+            System.out.println(abcfive);
+
+            var abcsixth = 2_000_000_000;
+            System.out.println(abcsixth);
+
+            var abcseventh = 0b000001000001;
+            System.out.println(Integer.toBinaryString(abcseventh));
+
+            boolean b1 = true;
+            System.out.println(b1);
+
+            //float number do not have bit operation
+
+            //compare two float numbers whether is equal or not
+            //float number can not represent right
+            float x = 2.5f, y = 2.3f;
+            float r = Math.abs(x - y);
+            if (r < 0.00000001) {
+                System.out.println("equal");
+            } else {
+                System.out.println("not equal");
+            }
+
+            //NaN Infinity -Infinity
+            //float时, 0 as 除数 不报错
+            var d1 = 0.0 / 0;
+            System.out.println(d1);
+            var d2 = 1.0 / 0;
+            System.out.println(d2);
+            var d3 = -1.0 / 0;
+            System.out.println(d3);
+
+            var n1 = (int) 12.3;
+            System.out.println(n1);
+
+            var n2 = (int) 1.2e20;
+            System.out.println(n2);
+
+            var n3 = Math.pow(2, 31) - 1;
+            System.out.println(n3);
+
+            // 四舍五入
+            var n4 = (int) (12.7 + 0.5);
+            System.out.println(n4);
+
+            System.out.println("");
+            var n5 = -1;
+            var n6 = n5 << 1;
+            System.out.println(Integer.toBinaryString(n6));
+            System.out.println(Integer.toBinaryString(n6).toString().length());
+            System.out.println(n6);
+
+            System.out.println("");
+            var n7 = 7;
+            var n8 = n7 << 29;
+            System.out.println(Integer.toBinaryString(n8));
+            System.out.println(n8);
+
+            System.out.println("");
+            n = -536870912;
+            System.out.println(Integer.toBinaryString(n));
+            System.out.println(Integer.toBinaryString(n).length());
+
+            // right move clear
+            var n9 = n >> 1;
+            System.out.println(Integer.toBinaryString(n9));
+
+            var n10 = n >> 3;
+            System.out.println(Integer.toBinaryString(n10));
+
+            // left move
+            System.out.println("");
+            n = 7;
+            System.out.println(Integer.toBinaryString(n).toString());
+
+            var n11 = n << 1;
+            System.out.println(Integer.toBinaryString(n11).toString());
+            System.out.println(n11);
+
+            System.out.println("");
+            var n12 = n << 29;
+            System.out.println(Integer.toBinaryString(n12).toString());
+            System.out.println(Integer.toBinaryString(n12).toString().length());
+            System.out.println(n12);
+            System.out.println("");
+
+            var n13 = n << 32;
+            System.out.println(Integer.toBinaryString(n13).toString());
+            System.out.println(Integer.toBinaryString(n13).toString().length());
+            System.out.println(n13);
+
+            System.out.println("");
+            var n14 = n << 33;
+            System.out.println(Integer.toBinaryString(n14).toString());
+            System.out.println(Integer.toBinaryString(n14).toString().length());
+            System.out.println(n14);
+
+            System.out.println("");
+            n = 0 | 0;
+            System.out.println(n);
+
+            n = 0 | 1;
+            System.out.println(n);
+
+            System.out.println("");
+            n = ~1; //-2
+            System.out.println(n);
+            n = ~0; //-1
+            System.out.println(n);
+
+            System.out.println("");
+            n = 1 ^ 0;
+            System.out.println(n);
+            n = 1 ^ 1;
+            System.out.println(n);
+            n = 0 ^ 0;
+            System.out.println(n);
+
+            System.out.println("");
+            var isGreater = 5 > 3;
+            System.out.println(isGreater);
+
+            var adult = 12;
+            var isZero = adult == 0;
+            System.out.println(isZero);
+
+            System.out.println("");
+            System.out.println("boolean operation");
+            // 短路运算，第一个表达式确定真假后，后面不再计算
+            var result = true || (0 > 5);
+            System.out.println(result);
+
+            //三目运算符
+            n = -100;
+            var m = n > 0 ? n + 1 : -n + 2;
+            System.out.println(m);
+
+            System.out.println("");
+            System.out.println("character chapter");
+            var c1 = '中';
+            System.out.println(c1);
+            //tc is unicode of c1
+            System.out.println("unicode of char, int c = char");
+            int tc = c1;
+            System.out.println(tc);
+
+            System.out.println("");
+            System.out.println("\\u + unicode consist of character");
+            // 反斜杠 + u + hex unicode number represent character
+            char c2 = '\u4e2d';
+            System.out.println(c2);
+
+            var c3 = '\u0041';
+            System.out.println(c3);
+
+            System.out.println("");
+            System.out.println("hex to decimal, use Integer.parseInt");
+            var dec = Integer.parseInt("4e2d", 16);
+            System.out.println(dec);
+
+
+
+
+
+
         }
 
         {
@@ -238,4 +438,5 @@ public class HelloWorld {
 
 
     }
+
 }
