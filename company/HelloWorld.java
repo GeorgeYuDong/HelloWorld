@@ -417,16 +417,41 @@ public class HelloWorld {
             char c2 = '\u4e2d';
             System.out.println(c2);
 
-            var c3 = '\u0041';
-            System.out.println(c3);
+            var c3 = '\u0041'; //65
+            //string + (string)other type
+            System.out.println("c3 character is " + c3);
 
             System.out.println("");
             System.out.println("hex to decimal, use Integer.parseInt");
             var dec = Integer.parseInt("4e2d", 16);
             System.out.println(dec);
 
+            System.out.println("character of convert meaning");
+            System.out.println("\\");
+            System.out.println("\"");
+            System.out.println("\'");
+            System.out.println("\r"); //回车
+            System.out.println("\t"); //tab
 
+            var s = """
+                    select * from 
+                        abc
+                    where id > 100
+                    """;
+            System.out.println(s);
 
+            var t = s;
+            s = "world";
+            System.out.println(t);
+
+            System.out.println(s);
+
+            var arr = new int[]{1, 2, 3, 4};
+            //foreach, 记得要加var，定义类型
+            for (var element:
+                 arr) {
+                System.out.println(element*3);
+            }
 
 
 
