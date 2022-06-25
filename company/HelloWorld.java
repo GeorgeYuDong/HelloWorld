@@ -452,6 +452,7 @@ public class HelloWorld {
                  arr) {
                 System.out.println(element*3);
             }
+            System.out.println("hello,world");
 
 
 
