@@ -437,7 +437,7 @@ public class HelloWorld {
             var s = """
                     select * from 
                         abc
-                    where id > 100
+                    where id > 100 
                     """;
             System.out.println(s);
 
@@ -450,13 +450,12 @@ public class HelloWorld {
 
             var arr = new int[]{1, 2, 3, 4};
             //foreach, 记得要加var，定义类型
-            for (var element:
-                 arr) {
-                System.out.println(element*3);
+            for (var element :
+                    arr) {
+                System.out.println(element * 3);
             }
             System.out.println("hello,world");
             System.out.println("");
-
 
 
 
