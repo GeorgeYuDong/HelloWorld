@@ -433,6 +433,7 @@ public class HelloWorld {
             System.out.println("\r"); //回车
             System.out.println("\t"); //tab
 
+            /*
             var s = """
                     select * from 
                         abc
@@ -445,6 +446,7 @@ public class HelloWorld {
             System.out.println(t);
 
             System.out.println(s);
+             */
 
             var arr = new int[]{1, 2, 3, 4};
             //foreach, 记得要加var，定义类型
