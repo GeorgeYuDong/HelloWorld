@@ -8,6 +8,7 @@ public class MsLinkedList<E> implements Iterable<E> {
     private Node<E> first;
     private Node<E> last;
 
+    //实现迭代器方法，以实现遍历
     @Override
     public Iterator<E> iterator() {
         return new MyIterator();
@@ -64,14 +65,12 @@ public class MsLinkedList<E> implements Iterable<E> {
 
     private Node<E> node(int index) {
         if (index < (size >> 1)) { //索引在前半部分，从头部开始查找
-            System.out.println("from head");
             Node<E> x = first;
             for (int i = 0; i < index; i++) {
                 x = x.next;
             }
             return x;
         } else { //可以实现二分查找，索引在后半部分，则从尾部开始查找
-            System.out.println("from tail");
             Node<E> x = last;
             for (int i = size - 1; i > index; i--) {
                 x = x.prev;
@@ -100,5 +99,15 @@ public class MsLinkedList<E> implements Iterable<E> {
         int a = size >> 1;
         System.out.println("a is " + a);
     }
+
+    /**
+    private static void printName(){
+       // static int a = 1; 局部变量不能为静态变量,且必须初始化
+        int a = 1;
+        System.out.println(a);
+    }
+     */
+
+
 
 }
