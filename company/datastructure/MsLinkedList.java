@@ -94,6 +94,9 @@ public class MsLinkedList<E> implements Iterable<E> {
             System.out.println(s);
         });
 
+
+        System.out.println("index = 6 is " + msLinkedList.get(6));
+
         int size = 0b111;
         System.out.println("size is " + size);
         int a = size >> 1;
