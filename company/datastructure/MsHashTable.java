@@ -71,5 +71,15 @@ public class MsHashTable<K, V> {
         msHashTable.put("key2", "AUS");
         System.out.println(msHashTable.get("key1"));
         System.out.println(msHashTable.get("key2"));
+
+        var key = "123";
+        int h = key.hashCode();
+        System.out.println(h);
+        System.out.println(h ^ (h >>> 16));
+
+        int a = 0b100;
+        int b = a >>> 2;
+        System.out.println(b);
+        System.out.println(a ^ b); //异或
     }
 }

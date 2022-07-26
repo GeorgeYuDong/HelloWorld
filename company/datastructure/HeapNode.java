@@ -44,6 +44,7 @@ public class HeapNode {
 
     public static void main(String[] args) {
         HeapNode heapNode = new HeapNode(6);
+        System.out.println(heapNode.isEmpty());
         heapNode.offer(4);
         heapNode.offer(3);
         heapNode.offer(6);
@@ -54,5 +55,9 @@ public class HeapNode {
         System.out.println(heapNode.poll());
         heapNode.offer(1);
         System.out.println(heapNode.peek());
+    }
+
+    public boolean isEmpty() {
+        return size == 0 ? true : false;
     }
 }
