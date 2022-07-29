@@ -8,16 +8,21 @@ public class HeapNode {
         heap = new int[capacity];
     }
 
+    //小顶堆建堆
     public void offer(int n) {
         int i = size;
+        //用i来控制堆化结束, i = 0时，堆化结束
         while (i > 0) {
             int parent = (i - 1) >>> 1;
+            // v为parent value
             int v = heap[parent];
             if (n >= v) {
                 break;
             }
+            //i = parent, heap[parent] = v;
+            // n < v时，v结点移到index = i; 交换。
             heap[i] = v;
-            i = parent;
+            i = parent; //parent实际上是新加入的元素能比较的次数
         }
         heap[i] = n;
         size++;
