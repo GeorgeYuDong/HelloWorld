@@ -1,4 +1,4 @@
-package company;
+package company.generics;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -152,6 +152,9 @@ public class DynamicArray<E> {
          * 不能保证类型安全
          * */
         //  numberArray.add(a); 不能写入
+        DynamicArray<? super Integer> dynamicArray1 = dynamicArray;
+        dynamicArray1.add(a);
+        // <? super E>的形式不能被类型参数替代,可以写入
 
 
     }
