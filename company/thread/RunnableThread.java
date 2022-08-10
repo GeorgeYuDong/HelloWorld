@@ -1,7 +1,6 @@
 package company.thread;
 
-public class RunableThread implements Runnable {
-
+public class RunnableThread implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 1000; i++) {
@@ -10,7 +9,7 @@ public class RunableThread implements Runnable {
     }
 
     public static void main(String[] args) {
-        new Thread(new RunableThread()).start();
+        new Thread(new RunnableThread()).start();
 
         //new Runnable()->new 接口(){}即匿名内部类
         new Thread(new Runnable() {
