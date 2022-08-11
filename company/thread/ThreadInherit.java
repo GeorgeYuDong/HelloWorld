@@ -1,6 +1,6 @@
 package company.thread;
 
-public class ThreadInerit extends Thread{
+public class ThreadInherit extends Thread{
     @Override
     public void run() {
         for (int i = 0; i < 1000; i++) {
@@ -10,13 +10,13 @@ public class ThreadInerit extends Thread{
 
     public static void main(String[] args) {
         //1 and 2 两者交替执行
-        new ThreadInerit().start(); //1
+        new ThreadInherit().start(); //1
 
         for (int i = 0; i < 1000; i++) { //2
             System.out.println( i + ", " + "www,china");
         }
 
-        new ThreadInerit(){
+        new ThreadInherit(){
             @Override
             public void run() {
                 for (int i = 0; i < 1000; i++) {
@@ -25,7 +25,7 @@ public class ThreadInerit extends Thread{
             }
         }.start();
 
-        new ThreadInerit(){
+        new ThreadInherit(){
             @Override
             public void run() {
                 for (int i = 0; i < 1000; i++) {
