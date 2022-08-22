@@ -171,6 +171,11 @@ public class TestRefection {
             throw new RuntimeException(e);
         }
 
+        System.out.println("");
+        System.out.println("-------mainMethod reflect----------------------");
+        m = c3.getMethod("main", String[].class);
+        m.invoke(null, new Object[]{new String[]{"a", "b"}});
+
 
 
 
