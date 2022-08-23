@@ -17,9 +17,11 @@ public class User {
     }
 
     protected void show() {
-        System.out.println("show method is protected");
+        System.out.println("protected show method is invoked");
     }
-
+    public void show2() {
+        System.out.println("public show method is invoked");
+    }
     public User() {
     }
 

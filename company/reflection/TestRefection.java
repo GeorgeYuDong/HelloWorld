@@ -1,9 +1,14 @@
 package company.reflection;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Properties;
 
 public class TestRefection {
 
@@ -27,16 +32,14 @@ public class TestRefection {
         System.out.println("------get all public constructor-------------------------");
 
         var Constructors = c3.getConstructors();
-        for (Constructor c :
-                Constructors) {
+        for (Constructor c : Constructors) {
             System.out.println(c);
         }
 
         System.out.println("");
         System.out.println("-------get all constructors(public, protected, private)-------------------------");
         Constructors = c3.getDeclaredConstructors();
-        for (Constructor c :
-                Constructors) {
+        for (Constructor c : Constructors) {
             System.out.println(c);
         }
 
@@ -75,8 +78,7 @@ public class TestRefection {
         System.out.println("");
         System.out.println("----get all public fields of User object--------------------------------");
         var fieldArray = c3.getFields();
-        for (Field f :
-                fieldArray) {
+        for (Field f : fieldArray) {
             System.out.println(f);
         }
 
@@ -84,8 +86,7 @@ public class TestRefection {
         System.out.println("---------------------------");
         System.out.println("----get all fields of User object--------------------------------");
         var f = c3.getDeclaredFields();
-        for (Field m :
-                f) {
+        for (Field m : f) {
             m.setAccessible(true);
             System.out.println(m);
         }
@@ -126,16 +127,14 @@ public class TestRefection {
         System.out.println("");
         System.out.println("---------get all public methods with parent methods---------------------------------");
         Method[] methods = c3.getMethods();
-        for (Method m :
-                methods) {
+        for (Method m : methods) {
             System.out.println(m);
         }
 
         System.out.println("");
         System.out.println("---------get all methods with private,protected, package methods, not contain parent class methods---------------------------------");
         methods = c3.getDeclaredMethods();
-        for (Method m :
-                methods) {
+        for (Method m : methods) {
             System.out.println(m);
         }
 
@@ -176,9 +175,57 @@ public class TestRefection {
         m = c3.getMethod("main", String[].class);
         m.invoke(null, new Object[]{new String[]{"a", "b"}});
 
+        System.out.println("");
+        System.out.println("----------------skip generic check------------------------------------");
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        stringArrayList.add("aaa");
+        stringArrayList.add("bbb");
+
+        var listClass = stringArrayList.getClass();
+        m = listClass.getMethod("add", Object.class);
+
+        //越过泛型检查，原先只能添加string, 使用反射，可以添加!str数据
+        m.invoke(stringArrayList, 100);
+        m.invoke(stringArrayList, 100.25);
+        m.invoke(stringArrayList, true);
+        m.invoke(stringArrayList, user);
+
+        for (Object obj : stringArrayList) {
+            System.out.println(obj);
+        }
+
+        try {
+            c3.getConstructor().newInstance();
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("");
+        System.out.println("----------run configure file class and method by reflection--------------------------------------");
+
+        var c4 = Class.forName(getValue("className"));
+
+        //declared获取所有方法(public, protected, package, private)
+        //要多写，多调试, 多思考，三者合一，大功指日可待
+        m = c4.getDeclaredMethod(getValue("methodName"));
+        m.setAccessible(true);
+        m.invoke(user);
 
 
+    }
 
+    public static String getValue(String key) {
+        var properties = new Properties();
+        try {
+            FileReader fileReader = new FileReader("company/reflection/pro.txt");
+            properties.load(fileReader);
+            fileReader.close();
+            return properties.getProperty(key);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
