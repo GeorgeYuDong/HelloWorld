@@ -151,6 +151,12 @@ public class TestRefection {
         }
 
         System.out.println("");
+        System.out.println("----get public method toString-----------------------------");
+        m = c3.getMethod("toString");
+        System.out.println(m.invoke(user));
+
+
+        System.out.println("");
         System.out.println("----get private method setName-----------------------------");
         //使用DeclaredMethod
         m = c3.getDeclaredMethod("setPhoneNum", String.class);
