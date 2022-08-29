@@ -18,5 +18,10 @@ public class CopyOnWriteListTest {
         }
 
         System.out.println(copyOnWriteArrayList.size());
+
+        // 单例模式
+        // 排序算法
+        // 生产者与消费者
+        // 死锁
     }
 }
