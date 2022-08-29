@@ -1,16 +1,37 @@
 package src.company.thread;
 
-public class RunnableTest implements Runnable{
+public class RunnableTest implements Runnable {
+
+    private int count;
+
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName() + ", hello,world");
+//        System.out.println(Thread.currentThread().getName() + ", hello,world");
+        for (int i = 0; i < 5; i++) {
+            count++;
+            System.out.println(Thread.currentThread().getName() + " num is " + count);
+        }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        //3个线程执行同一个runnable对象，对象逻辑count++是在已有值基础之上一直递增
+        //而不会从count=0开始递增
         RunnableTest runnableTest = new RunnableTest();
-        new Thread(runnableTest, "Jack").start();
-        new Thread(runnableTest, "Jackson").start();
-        new Thread(runnableTest, "Jacky").start();
+        Thread a = new Thread(runnableTest, "A");
+        a.start();
+        Thread b = new Thread(runnableTest, "B");
+        b.start();
+        Thread c = new Thread(runnableTest, "C");
+        c.start();
+
+        /*
+        a.join();
+        b.join();
+        c.join();
+         */
+
+//        System.out.println("main routine count is: " + runnableTest.count);
+
 
     }
 }
