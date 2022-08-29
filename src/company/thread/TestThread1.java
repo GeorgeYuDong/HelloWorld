@@ -1,12 +1,22 @@
 package src.company.thread;
 
+import java.util.stream.IntStream;
+
 //创建线程方式，继承Thread, 重写run(), 调用start()执行
 public class TestThread1 extends Thread {
     private int count;
 
+    private final static String PREFIX = "ALEX-";
+
+    private static Thread createThead(final int intName) {
+        return new Thread(
+                () -> System.out.println(Thread.currentThread().getName()),
+                PREFIX + intName);
+    }
+
     @Override
-    public void run(){
-        for (int i = 0; i < 5 ; i++) {
+    public void run() {
+        for (int i = 0; i < 5; i++) {
             count++;
             System.out.println(Thread.currentThread().getName() + " num is " + count);
         }
@@ -28,5 +38,16 @@ public class TestThread1 extends Thread {
         TestThread1 thread3 = new TestThread1();
         thread3.start();
 //        thread3.join();
+        IntStream.range(0, 5).boxed().map(integer -> new Thread(() -> System.out.println(Thread.currentThread().getName()))).forEach(Thread::start);
+
+        // final的使用价值
+        Thread thead = createThead(1);
+
+        // 运行之前可修改线程名称
+        thead.setName("abc");
+        System.out.println("thead state is " + thead.getState());
+        thead.start();
+        System.out.println("thead name is " + thead.getName());
+
     }
 }

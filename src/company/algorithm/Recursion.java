@@ -10,7 +10,7 @@ public class Recursion {
         //f(n) = f(n - 1) + 1为递推公式
         //找到终止条件，把递推公式转化为代码就行了
         //空间复杂度O（n）
-        return count(n - 1) + 1;
+        return count(n - 1) * 3;
     }
 
     public static int fibonacci(int n) {
