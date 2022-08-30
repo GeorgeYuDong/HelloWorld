@@ -1,9 +1,9 @@
-package src.company.thread;
+package src.company.thread.join;
 
-public class ThreadJoin implements Runnable{
+public class ThreadJoin implements Runnable {
     @Override
     public void run() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 200; i++) {
             System.out.println("vip is coming, " + i);
         }
     }
@@ -14,10 +14,10 @@ public class ThreadJoin implements Runnable{
         thread.start();
 
         for (int i = 0; i < 100; i++) {
-           if (i == 30) {
-               thread.join(); //插队，使主线程阻塞
-           }
-           System.out.println("main routine, " + i);
+            System.out.println("main routine, " + i);
+            if (i == 30) {
+                thread.join(); //在main routine i == 30插队，使主线程阻塞
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package src.company.thread;
+package src.company.thread.runnable;
 
 public class RunnableTest implements Runnable {
 
