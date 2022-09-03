@@ -32,5 +32,33 @@ public class VolatileExample {
         }, "b");
         a.start();
         b.start();
+
+        Switcher switcher = new Switcher();
+        int num = 3;
+        Thread[] threads = new Thread[num];
+        for (int i = 0; i < 2; i++) {
+            threads[i] = new Thread(() -> {
+                for (int i1 = 0; i1 < 2; i1++) {
+                    switcher.setOn(true);
+                }
+            });
+            threads[i].start();
+        }
+        threads[2] = new Thread(()->{switcher.setOn(false);});
+        threads[2].start();
+
+        System.out.println(switcher.isOn());
+    }
+}
+
+class Switcher {
+    private volatile boolean on;
+
+    public boolean isOn() {
+        return on;
+    }
+
+    public void setOn(boolean on) {
+        this.on = on;
     }
 }
