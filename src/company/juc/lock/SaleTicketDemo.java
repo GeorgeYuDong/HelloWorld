@@ -1,5 +1,6 @@
 package src.company.juc.lock;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -8,22 +9,28 @@ public class SaleTicketDemo {
     public static void main(String[] args) {
 
         Ticket ticket = new Ticket();
-        new Thread(() -> {
+        Thread a = new Thread(() -> {
             for (int i = 0; i < 20; i++) {
                 ticket.sale();
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }, "A").start();
+        }, "A");
+        a.start();
 
-        new Thread(() -> {
+        Thread b = new Thread(() -> {
             for (int i = 0; i < 50; i++) {
                 ticket.sale();
             }
-        }, "B").start();
+        }, "B");
+        b.start();
 
     }
-
-
 }
+
 
 // 面试常问：单例模式，排序算法，生产着与消费者，死锁
 // 线程并发问题根源：

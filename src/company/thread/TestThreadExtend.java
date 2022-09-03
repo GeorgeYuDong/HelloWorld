@@ -3,7 +3,7 @@ package src.company.thread;
 import java.util.stream.IntStream;
 
 //创建线程方式，继承Thread, 重写run(), 调用start()执行
-public class TestThread1 extends Thread {
+public class TestThreadExtend extends Thread {
     private int count;
 
     private final static String PREFIX = "ALEX-";
@@ -26,16 +26,16 @@ public class TestThread1 extends Thread {
         // 创建线程对象, 继承thread, 重写run方法
         // count++执行单元，多个线程会重复执行，
         // 执行起点count=0,而不是在其他线程已执行基础之上
-        var thread2 = new TestThread1();
+        var thread2 = new TestThreadExtend();
         //调用start()执行
         thread2.start();
 //        thread2.join();
 
-        TestThread1 thread1 = new TestThread1();
+        TestThreadExtend thread1 = new TestThreadExtend();
         thread1.start();
 //        thread1.join();
 
-        TestThread1 thread3 = new TestThread1();
+        TestThreadExtend thread3 = new TestThreadExtend();
         thread3.start();
 //        thread3.join();
         IntStream.range(0, 5).boxed().map(integer -> new Thread(() -> System.out.println(Thread.currentThread().getName()))).forEach(Thread::start);

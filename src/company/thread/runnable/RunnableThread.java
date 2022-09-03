@@ -25,7 +25,7 @@ public class RunnableThread implements Runnable {
             System.out.println(i + ", " + "www.baidu.com");
         }
 
-        //
+        //多线程不一定执行，依赖于操作系统调度
         new Thread(() -> {
             for (int i = 0; i < 2000; i++) {
                 System.out.println(i + ", " + "USA");
