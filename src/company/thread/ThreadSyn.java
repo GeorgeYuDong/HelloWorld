@@ -4,9 +4,12 @@ public class ThreadSyn {
     public static void main(String[] args) {
         BuyTicket buyTicket = new BuyTicket();
 
-        new Thread(buyTicket, "USA").start();
-        new Thread(buyTicket, "CHINA").start();
-        new Thread(buyTicket, "JAPAN").start();
+        int num = 5;
+        Thread[] threads = new Thread[num];
+        for (int i = 0; i < num; i++) {
+           threads[i] = new Thread(buyTicket);
+           threads[i].start();
+        }
     }
 }
 
