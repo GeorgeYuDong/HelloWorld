@@ -1,7 +1,10 @@
 package src.company.generics;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  * @author yudong
@@ -102,7 +105,7 @@ public class DynamicArray<E> {
      * 可以简化声明
      * static <D> void
      * copy(DynamicArray<D> dest, DynamicArray<? extends D> src)
-     * */
+     */
     public static <D, S extends D> void copy(DynamicArray<D> dest,
                                              DynamicArray<S> src) {
 
@@ -113,10 +116,10 @@ public class DynamicArray<E> {
 
     /**
      * ? super E 支持写入
-     * */
+     */
     public void copyTo(DynamicArray<? super E> dest) {
-        for (int i = 0; i < size ; i++) {
-           dest.add(get(i));
+        for (int i = 0; i < size; i++) {
+            dest.add(get(i));
         }
     }
 
@@ -145,16 +148,46 @@ public class DynamicArray<E> {
         System.out.println(indexOf(number, 100));
 
         DynamicArray<Integer> dynamicArray = new DynamicArray<>();
+        dynamicArray.add(123);
+        dynamicArray.add(456);
+
+        // 限定可以读取的类型, 必须是Number或其子类, extends后面子类层级越多，限定得越具体
+        // 限定的是可读取的类型
         DynamicArray<? extends Number> numberArray = dynamicArray;
+        System.out.println(numberArray.get(0));
+        System.out.println(numberArray.get(1));
+
         Integer a = 200;
         /**
          * ? extends Number 表示Number的子类型，无法确知是哪个类型。
          * 不能保证类型安全
          * */
         //  numberArray.add(a); 不能写入
-        DynamicArray<? super Integer> dynamicArray1 = dynamicArray;
-        dynamicArray1.add(a);
+
+
+        // 匹配的是Integer的父类
+        DynamicArray<? super Integer> dynamicArray1 = new DynamicArray<Number>();
+        dynamicArray1.add(200);
+        System.out.println(dynamicArray1.get(0));
         // <? super E>的形式不能被类型参数替代,可以写入
+
+        ArrayList<? super Double> numbers = new ArrayList<Number>();
+        numbers.add(123.23);
+
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+        integerArrayList.add(111);
+
+        ArrayList<? extends Number> integers = integerArrayList;
+        System.out.println(integers.get(0));
+
+
+        ArrayList<Double> doubleArrayList = new ArrayList<>();
+        doubleArrayList.add(11.11);
+
+        // 只要是Number的子类，通过<？extends Number>可读取子类容器的元素
+        // 消费型接口，必须传入子类容器
+        integers = doubleArrayList;
+        System.out.println(integers.get(0));
 
 
     }

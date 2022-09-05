@@ -62,6 +62,14 @@ public class Line extends Shape {
                 + ", using color " + super.getColor());
     }
 
+    @Override
+    public String toString() {
+        return "Line{" +
+                "start=" + start +
+                ", end=" + end +
+                '}';
+    }
+
     public static void main(String[] args) {
         PointTwo start = new PointTwo(3, 0);
         PointTwo end = new PointTwo(0, 4);
