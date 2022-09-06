@@ -1,6 +1,7 @@
 package src.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author yudong
@@ -61,7 +62,7 @@ public class ArrowLine extends Line {
         shapes1.add(arrowLine);
         shapes1.add(line);
         shapes1.add(shape);
-        System.out.println("===========");
+        System.out.println("===写自己和子类对象========");
         // 写子类对象, 父类，可指向的是子类对象，利用的是多态性质。
         System.out.println(shapes1.get(0));
         System.out.println(shapes1.get(1).toString());
@@ -69,6 +70,7 @@ public class ArrowLine extends Line {
         System.out.println("===========");
 
 
+        System.out.println("====读子类对象,分开读,读三个不同子类对象容器=======");
         // 读子类对象
         ArrayList<? extends Shape> shapes2 = lines;
         System.out.println(shapes2.get(0));

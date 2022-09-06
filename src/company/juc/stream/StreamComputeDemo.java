@@ -28,7 +28,7 @@ public class StreamComputeDemo {
                     return us2.compareTo(us1);
                 })
                 .limit(3)
-                .forEach(System.out::println);
+                .forEachOrdered(System.out::println);
     }
 }
 
