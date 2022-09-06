@@ -50,7 +50,7 @@ public class VolatileExample {
         System.out.println(switcher.isOn());
     }
 }
-
+// 只是设置值，与前一个值无关，无竞态条件，但有可见性问题，所以使用volatile解决
 class Switcher {
     private volatile boolean on;
 
