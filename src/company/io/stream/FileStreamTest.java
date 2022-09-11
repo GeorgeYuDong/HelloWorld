@@ -25,7 +25,7 @@ public class FileStreamTest {
         }
 
         File file1 = new File("/Users/yudong/c.txt");
-        byte[] data = { 88, 89};
+        byte[] data = {88, 89};
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(file1);
             fileOutputStream.write(data);
