@@ -51,23 +51,37 @@ public class ArrowLine extends Line {
         PointTwo start = new PointTwo(3, 0);
         PointTwo end = new PointTwo(0, 4);
         Line line = new Line(start, end, "red");
+
+        PointTwo start_two = new PointTwo(1, 0);
+        PointTwo end_two = new PointTwo(0, 4);
+        Line line_two = new Line(start_two, end_two, "green");
+
         lines.add(line);
         arrowLines.add(arrowLine);
 
         Shape shape = new Shape("red");
         shapes.add(shape);
 
-        ArrayList<? super Shape> shapes1 = new ArrayList<Shape>();
+        // 本身写入的可读可写，但是子类容器写入的，就不可读
+        ArrayList<? super Line> shapes1 = new ArrayList<Shape>();
         //存放的是Line及子类ArrowLine, 限制可写入的类型，类型越具体，子类越少，可写入的类型就越少。
         shapes1.add(arrowLine);
         shapes1.add(line);
-        shapes1.add(shape);
+//        shapes1.add(shape);
         System.out.println("===写自己和子类对象========");
         // 写子类对象, 父类，可指向的是子类对象，利用的是多态性质。
         System.out.println(shapes1.get(0));
         System.out.println(shapes1.get(1).toString());
-        System.out.println(shapes1.get(2).toString());
-        System.out.println("===========");
+//        System.out.println(shapes1.get(2).toString());
+
+        System.out.println("====super写入子类容器 start===========");
+        System.out.println("");
+        shapes1 = lines;
+        shapes1.add(line_two);
+        System.out.println(shapes1.get(1));
+
+        System.out.println("");
+        System.out.println("====super写入子类容器 end===========");
 
 
         System.out.println("====读子类对象,分开读,读三个不同子类对象容器=======");
