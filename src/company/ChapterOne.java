@@ -218,6 +218,44 @@ public class ChapterOne {
 
         System.out.println("2 的 16 次方为 " + Math.pow(2, 16));
 
+        char ch3 = '\u005d';
+        System.out.println("ch3 is " + ch3);
+
+        String strS = "\u004d\u005f";
+        System.out.println("strS is " + strS);
+
+        int xx = 3, yy = 5;
+        //    System.out.println(xx + '\t' + yy + '\n'); 字符相加, 就是数字
+        System.out.println("" + xx + '\t' + yy + '\n');
+        double d11 = .2;
+        System.out.println("d11 = " + d11);
+
+        float f11 = 12233232322242242f; //丢失精度
+        System.out.println("f11 = " + f11); // (int, long)长整型数据赋值给float,double可能会丢失精度
+
+        int num1 = 3, num2 = 5;
+        int result = 0;
+        result = num1 + num2;
+        System.out.println(num1 + " + " + num2 + " = " + result);
+
+        result = num1 - num2;
+        System.out.println(num1 + " - " + num2 + " = " + result);
+
+        result = num2 / num1;
+        System.out.println(num2 + " / " + num1 + " = " + result);
+
+        result = num2 * num1;
+        System.out.println(num2 + " * " + num1 + " = " + result);
+
+        System.out.println("5.0 / 3 " + " = " + 5.0 / 3);
+        System.out.println("13.5 % 3 " + " = " + 13.5 % 3);
+        System.out.println("13 % 3 " + " = " + 13 % 3);
+
+        float f = 5.0f;
+        long l = 5; // float 与 int compare, if value is equal, bool is true
+        System.out.println("f == l, result is " + (f == l));
+
+        final int N = 6; //常量用final修饰,不可修改
     }
 
     public static int sum(int a, int b) {
