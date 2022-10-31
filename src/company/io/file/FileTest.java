@@ -20,6 +20,8 @@ public class FileTest {
 
         System.out.println(file.lastModified());
 
+        System.out.println(file.getPath());
 
+        
     }
 }
